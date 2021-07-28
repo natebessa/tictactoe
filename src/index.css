@@ -13,8 +13,21 @@ ol, ul {
     display: table;
 }
 
-.status {
+.player-status {
     margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.move {
+    margin-bottom: 5px;
+}
+
+.move-sort-button {
+    margin-left: 15px;
+}
+
+.restart-game-button {
+    margin-top: 15px;
 }
 
 .current-move {
