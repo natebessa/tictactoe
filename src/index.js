@@ -136,7 +136,9 @@ class Game extends React.Component {
         }
 
         let status;
-        if (winner) {
+        if (winner && winner === 'tie') {
+            status = 'Tie game!';
+        } else if (winner) {
             status = 'Winner: ' + winner;
         } else {
             status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
@@ -192,12 +194,20 @@ function calculateWinner(squares) {
         [0, 4, 8],
         [2, 4, 6],
     ];
+
+    // Look for a winner.
     for (let i = 0; i < lines.length; i++) {
         const [a, b, c] = lines[i];
         if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
             return [squares[a], a, b, c];
         }
     }
+
+    // Check for a tie.
+    if (squares.filter(x => x).length == 9) {
+        return ['tie']
+    }
+
     return null;
 }
 
